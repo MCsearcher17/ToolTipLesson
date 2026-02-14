@@ -56,55 +56,7 @@ namespace ToolTipLecture
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Form1_KeyDown!);
         }
-
-        /* Alternative approach using a dictionary to store controls
-         
-         // Replace individual control fields with a dictionary
-         private readonly Dictionary<string, Control> controls = new();
-         private TableLayoutPanel FormPanel;
-
-         public Form1()
-         {
-             InitializeComponent();
-         
-             FormPanel = CreatePanel();
-             this.Controls.Add(FormPanel);
-         
-             // Define controls and their locations
-             var controlDefinitions = new (string key, Control control, TableLocation location)[]
-             {
-                 ("UserWelcomeLabel", ControlBuilder.CreateLabel("Welcome to the ToolTip usage example!!"), new TableLocation { Column 0,   Row =  0 }),
-                 ("DataEntryTextBox", ControlBuilder.CreateTextBox(new Size(400, 100)), new TableLocation { Column = 0, Row = 1 }),
-                 ("SaveDataButton", ControlBuilder.CreateButton("Save Text", new Size(400, 50), Color.LightBlue), new TableLocati{   Column =  1,   Row = 1 }),
-                 ("ClearListButton", ControlBuilder.CreateButton("Clear List Box", new Size(400, 50), Color.LawnGreen)newTableLocation        { Column =     1, Row = 2 }),
-                 ("DataListBox", ControlBuilder.CreateListBox(new Size(400, 250)), new TableLocation { Column = 0, Row = 2 }),
-             };
-         
-             // Add controls to dictionary and panel
-             foreach (var (key, control, location) in controlDefinitions)
-             {
-                 controls[key] = control;
-                 AddControlsToPanel(FormPanel, control, location);
-             }
-         
-             // Access controls via dictionary
-             var UserWelcomeLabel = (Label)controls["UserWelcomeLabel"];
-             var SaveDataButton = (Button)controls["SaveDataButton"];
-             var ClearListButton = (Button)controls["ClearListButton"];
-             var DataEntryTextBox = (TextBox)controls["DataEntryTextBox"];
-             var DataListBox = (ListBox)controls["DataListBox"];
-         
-             // ToolTips
-             ControlBuilder.CreateToolTip(UserWelcomeLabel, "This is a label control", "Label Information");
-             ControlBuilder.CreateToolTip(SaveDataButton, "This is a button control", "Button Information").ToolTipIcon=ToolTipIcon.Info;
-             ControlBuilder.CreateToolTip(DataEntryTextBox, "This is a text box control", "Text Box Information");
-             ControlBuilder.CreateToolTip(DataListBox, "This is a list box control", "List Box Information");
-         
-             SaveDataButton.Click += SaveDataButton_Click!;
-             ClearListButton.Click += ClearListButton_Click!;
-         }
-         */
-
+ 
         public void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -323,4 +275,52 @@ namespace ToolTipLecture
         }
     }
 }
+
+/* Alternative approach using a dictionary to store controls
+         
+         // Replace individual control fields with a dictionary
+         private readonly Dictionary<string, Control> controls = new();
+         private TableLayoutPanel FormPanel;
+
+         public Form1()
+         {
+             InitializeComponent();
+         
+             FormPanel = CreatePanel();
+             this.Controls.Add(FormPanel);
+         
+             // Define controls and their locations
+             var controlDefinitions = new (string key, Control control, TableLocation location)[]
+             {
+                 ("UserWelcomeLabel", ControlBuilder.CreateLabel("Welcome to the ToolTip usage example!!"), new TableLocation { Column 0,   Row =  0 }),
+                 ("DataEntryTextBox", ControlBuilder.CreateTextBox(new Size(400, 100)), new TableLocation { Column = 0, Row = 1 }),
+                 ("SaveDataButton", ControlBuilder.CreateButton("Save Text", new Size(400, 50), Color.LightBlue), new TableLocati{   Column =  1,   Row = 1 }),
+                 ("ClearListButton", ControlBuilder.CreateButton("Clear List Box", new Size(400, 50), Color.LawnGreen)newTableLocation        { Column =     1, Row = 2 }),
+                 ("DataListBox", ControlBuilder.CreateListBox(new Size(400, 250)), new TableLocation { Column = 0, Row = 2 }),
+             };
+         
+             // Add controls to dictionary and panel
+             foreach (var (key, control, location) in controlDefinitions)
+             {
+                 controls[key] = control;
+                 AddControlsToPanel(FormPanel, control, location);
+             }
+         
+             // Access controls via dictionary
+             var UserWelcomeLabel = (Label)controls["UserWelcomeLabel"];
+             var SaveDataButton = (Button)controls["SaveDataButton"];
+             var ClearListButton = (Button)controls["ClearListButton"];
+             var DataEntryTextBox = (TextBox)controls["DataEntryTextBox"];
+             var DataListBox = (ListBox)controls["DataListBox"];
+         
+             // ToolTips
+             ControlBuilder.CreateToolTip(UserWelcomeLabel, "This is a label control", "Label Information");
+             ControlBuilder.CreateToolTip(SaveDataButton, "This is a button control", "Button Information").ToolTipIcon=ToolTipIcon.Info;
+             ControlBuilder.CreateToolTip(DataEntryTextBox, "This is a text box control", "Text Box Information");
+             ControlBuilder.CreateToolTip(DataListBox, "This is a list box control", "List Box Information");
+         
+             SaveDataButton.Click += SaveDataButton_Click!;
+             ClearListButton.Click += ClearListButton_Click!;
+         }
+         */
 
